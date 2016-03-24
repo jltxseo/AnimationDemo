@@ -1,0 +1,33 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="cn.xq.jltx.animationdemo.MainFragment">
+
+    <Button
+        android:id="@+id/translate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Translate平移"/>
+
+    <Button
+        android:id="@+id/rotate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="rotate旋转"/>
+
+
+    <Button
+        android:id="@+id/scal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Scal缩放"/>
+
+    <Button
+        android:id="@+id/apha"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="apha透明度"/>
+
+</LinearLayout>
