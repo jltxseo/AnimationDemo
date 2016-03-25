@@ -1,9 +1,11 @@
 package cn.xq.jltx.animationdemo;
 
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,7 +38,6 @@ public class MainFragment extends Fragment {
      * @param param2 Parameter 2.
      * @return A new instance of fragment MainFragment.
      */
-    // TODO: Rename and change types and number of parameters
     public static MainFragment newInstance(String param1, String param2) {
         MainFragment fragment = new MainFragment();
         Bundle args = new Bundle();
@@ -57,13 +58,13 @@ public class MainFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_main, container, false);
+        CustomAnimFrameLayout customAnimFrameLayout = new CustomAnimFrameLayout(getActivity());
+        return inflater.inflate(R.layout.fragment_main, customAnimFrameLayout, true);
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         translateBtn = (Button)view.findViewById(R.id.translate);
-
         translateBtn.setOnClickListener(mOnClickListener);
         super.onViewCreated(view, savedInstanceState);
     }
@@ -73,11 +74,17 @@ public class MainFragment extends Fragment {
     private View.OnClickListener mOnClickListener = new View.OnClickListener(){
         @Override
         public void onClick(View view) {
+            FragmentManager fragmentManager = getActivity().getFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             switch (view.getId()){
-
                 case R.id.translate:
+                    TranslateFragment translateFragment = new TranslateFragment();
+//                    fragmentTransaction.setCustomAnimations(R.anim.push_right_in, R.anim.push_left_out, R.anim.push_left_in, R.anim.push_right_out);
+                    fragmentTransaction.setCustomAnimations(R.animator.fragment_slide_right_enter, R.animator.fragment_slide_left_exit, R.animator.fragment_slide_left_enter, R.animator.fragment_slide_right_exit);
+                    fragmentTransaction.replace(R.id.containt,translateFragment);
+                    fragmentTransaction.addToBackStack(TranslateFragment.class.getSimpleName());
+                    fragmentTransaction.commit();
                     break;
-
                 default:
                     break;
             }
