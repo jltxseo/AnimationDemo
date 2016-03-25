@@ -5,20 +5,11 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * to handle interaction events.
- * Use the {@link MainFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class MainFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -30,14 +21,6 @@ public class MainFragment extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment MainFragment.
-     */
     public static MainFragment newInstance(String param1, String param2) {
         MainFragment fragment = new MainFragment();
         Bundle args = new Bundle();
@@ -63,7 +46,7 @@ public class MainFragment extends Fragment {
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(View view,  Bundle savedInstanceState) {
         translateBtn = (Button)view.findViewById(R.id.translate);
         translateBtn.setOnClickListener(mOnClickListener);
         super.onViewCreated(view, savedInstanceState);
@@ -79,7 +62,6 @@ public class MainFragment extends Fragment {
             switch (view.getId()){
                 case R.id.translate:
                     TranslateFragment translateFragment = new TranslateFragment();
-//                    fragmentTransaction.setCustomAnimations(R.anim.push_right_in, R.anim.push_left_out, R.anim.push_left_in, R.anim.push_right_out);
                     fragmentTransaction.setCustomAnimations(R.animator.fragment_slide_right_enter, R.animator.fragment_slide_left_exit, R.animator.fragment_slide_left_enter, R.animator.fragment_slide_right_exit);
                     fragmentTransaction.replace(R.id.containt,translateFragment);
                     fragmentTransaction.addToBackStack(TranslateFragment.class.getSimpleName());

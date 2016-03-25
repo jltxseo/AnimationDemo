@@ -2,15 +2,54 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/holo_red_dark">
+    android:background="@android:color/holo_blue_dark">
 
-    <Button
-        android:id="@+id/sub_Btn"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="内部切换"/>
-    <FrameLayout
-        android:id="@+id/translate_contain"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/translateX_xml_self"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="相对自己左右平移"/>
+
+        <Button
+            android:id="@+id/translateX_xml_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="相对父控件左右平移"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"/>
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/translateX_xml_self_fill_true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="相对自己左右平移保持动画"/>
+
+        <Button
+            android:id="@+id/translateX_xml_parent_fill_false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="相对自己左右平移保持动画"/>
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/img_transform"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:src = "@drawable/ceshi"/>
 </LinearLayout>
