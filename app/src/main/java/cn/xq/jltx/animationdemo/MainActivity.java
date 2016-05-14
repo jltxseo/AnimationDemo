@@ -18,6 +18,9 @@ public class MainActivity extends Activity {
         MainFragment mainFragment = MainFragment.newInstance(null,null);
         fragmentTransaction.add(R.id.containt,mainFragment);
         fragmentTransaction.commit();
+
+
+
     }
 
     @Override
